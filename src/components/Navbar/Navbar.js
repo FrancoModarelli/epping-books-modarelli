@@ -1,40 +1,39 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
+import './Navbar.css';
+import CartWidget from '../Cart/CartWidget'
 import { MenuItems } from './MenuItems';
 import { Brand } from './Brand';
-import './Navbar.css';
-import { ButtonSignUp } from '../Buttons/Button-SignUp';
 
+const Navbar = () => {
 
-class Navbar extends Component{
+    //Menu responsive
+    const [responsive,setResponsive] = useState(false);
 
-    state = {clicked: false}
-    
-    handleClick = () => {
+    const handleClick = () => {
         //cambia el logo de hambuguesa a X y viceversa
-        this.setState({ clicked : !this.state.clicked})
+        setResponsive(!responsive);
     } 
-    render(){
-        return(
-            <nav className='NavbarItems'>
-                <Brand />
-                <div className='menu-icon' onClick={this.handleClick}>
-                    <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}/>
-                </div>
-                <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-                    {MenuItems.map((item,index) =>{
-                        return(
-                            <li key={index}>
-                                <a className={item.cName} href={item.url}>
-                                {item.title}
-                                </a>
-                            </li>
-                        )
-                    })}
-                </ul>
-                <ButtonSignUp>Registrate</ButtonSignUp>
-            </nav>
-        )
-    }
+
+    return(
+        <nav className='NavbarItems'>
+            <Brand />
+            <div className='menu-icon' onClick={handleClick}>
+                <i className={responsive ? 'fas fa-times' : 'fas fa-bars'}/>
+            </div>
+            <ul className={responsive ? 'nav-menu active' : 'nav-menu'}>
+                {MenuItems.map((item,index) =>{
+                    return(
+                        <li key={index}>
+                            <a className={item.cName} href={item.url}>
+                            {item.title}
+                            </a>
+                        </li>
+                    )
+                })}
+            </ul>
+            <CartWidget />
+        </nav>
+    )
 }
 
 export default Navbar
