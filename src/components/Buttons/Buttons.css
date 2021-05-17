@@ -1,6 +1,7 @@
 /* creo desde el root los colores que necesito y los uso despues como variables*/
 :root {
-    --primary: #3acbf7
+    --primary: #3acbf7;
+    --secondary: #dd2c2c;
 }
 
 .btn{
@@ -19,8 +20,21 @@
     transition: 250ms;
 }
 
+.btn--{
+    padding: 8px 20px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+
 .btn--primary{
     background-color: var(--primary);
+}
+
+.btn--secondary{
+    background-color: var(--secondary);
 }
 
 .btn--outline{
@@ -30,6 +44,13 @@
     border-radius: 10px;
     border: 1px solid var(--primary);
     transition: all 0.3s ease-out;
+}
+
+.btn--small{
+    padding: 5px 12px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #fff;
 }
 
 .btn--medium{
