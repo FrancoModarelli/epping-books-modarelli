@@ -1,28 +1,7 @@
-
-/*---Tarjetas Producto----*/
-.card{
-    margin-top: 1rem;
-    margin-left: 2rem;
-    width: 18rem;
-    border-radius: 10px;
-}
-
-.card-title{
-    text-align: center;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-/*---Counter---*/
-.counter {
-    width: 20%;
-    text-align: center;
-    border: none;
-    font-size: 20px;
-}
-
-.container{
+.productView{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
+    padding-bottom: 50px;
 }
