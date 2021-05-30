@@ -37,7 +37,7 @@ const ProductContainer = ({initial, stock}) =>{
             <Product key={book.publication_dt} 
                 title={book.book_title}
                 imagen={book.imagen?.id || 'https://cloudfront-us-east-1.images.arcpublishing.com/copesa/LAGOZGASXVGWPASNWYYP3IAPV4.jpg'}
-                detail = {book.summary !== "" ? book.summary : "Estoy Vacio" }
+                detail = {book.summary !== "" ? book.summary : "'Ups...No tengo info'" }
                 stock = {stock}
                 initial = {initial}
             />

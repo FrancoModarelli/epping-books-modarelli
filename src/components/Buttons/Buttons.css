@@ -1,7 +1,9 @@
 /* creo desde el root los colores que necesito y los uso despues como variables*/
 :root {
     --primary: #3acbf7;
+    --primary-dis: #9fe2f7;
     --secondary: #dd2c2c;
+    --secondary-dis: #e07777;
 }
 
 /*--Boton Generico--*/
@@ -33,10 +35,20 @@
 .btn--primary{
     background-color: var(--primary);
 }
-
 .btn--secondary{
     background-color: var(--secondary);
 }
+
+#btnMore:disabled{
+    background-color: var(--primary-dis);
+    color: #fff;
+}
+#btnLess:disabled{
+    background-color: var(--secondary-dis);
+    color: #fff;
+}
+
+
 
 .btn--outline{
     background-color: transparent;
