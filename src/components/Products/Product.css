@@ -15,7 +15,10 @@
 /*---Tarjeta Producto Detalle---*/
 
 .maxi-Width{
-    width: 500px;
+    width: 700px;
+}
+.img_detail{
+    padding-right: 0px;
 }
 
 /*---Counter---*/

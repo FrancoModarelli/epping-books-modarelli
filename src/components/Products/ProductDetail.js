@@ -9,8 +9,8 @@ const ProductDetail = ({ imagen, title, stock, initial, detail }) => {
     <>    
         <div className="card maxi-Width">
             <div className="row no-gutters">
-                <div className="col-sm-5">
-                    <img src={ imagen } className="card-img-top h-100" alt={ title }/>
+                <div className="col-sm-5 img_detail">
+                    <img src={ imagen } className="card-img-top h-100 " alt={ title }/>
                 </div>
                 <div className="col-sm-7">
                     <div className="card-body">

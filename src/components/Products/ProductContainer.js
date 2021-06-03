@@ -8,7 +8,7 @@ import ProductDetail from './ProductDetail'
 
 const ProductContainer = ({initial, stock}) =>{
     
-    const [books,setBooks] = useState(null)
+    const [books,setBooks] = useState([])
 
     //uso de api para crear contenido
     useEffect(() => {
@@ -33,29 +33,36 @@ const ProductContainer = ({initial, stock}) =>{
     },[])
     
     return(
-        <>
-        <div className='productView'>
-            {books?.map((book)=>(
-            <Product key={book.publication_dt} 
-                title={book.book_title}
-                imagen={book.imagen?.id || 'https://cloudfront-us-east-1.images.arcpublishing.com/copesa/LAGOZGASXVGWPASNWYYP3IAPV4.jpg'}
-                stock = {stock}
-                initial = {initial}
-            />
-            ))}
+        <div>
+            {   
+                //comprobamos que el tamaño del array y si es me 0 o 'false', va a mostrar le mensaje, sino, renderiza.
+                books.length ?
+                <>
+                    <div className='productView'>
+                        {books?.map((book)=>(
+                        <Product key={book.publication_dt} 
+                            title={book.book_title}
+                            imagen={book.imagen?.id || 'https://cloudfront-us-east-1.images.arcpublishing.com/copesa/LAGOZGASXVGWPASNWYYP3IAPV4.jpg'}
+                            stock = {stock}
+                            initial = {initial}
+                        />
+                        ))}
+                        </div>
+                        <div className='productView'>
+                        {books?.map((book)=>(
+                        <ProductDetail key={book.publication_dt} 
+                            title={book.book_title}
+                            imagen={book.imagen?.id || 'https://cloudfront-us-east-1.images.arcpublishing.com/copesa/LAGOZGASXVGWPASNWYYP3IAPV4.jpg'}
+                            detail={book.summary} 
+                            stock = {stock}
+                            initial = {initial}
+                        />
+                        ))}
+                    </div>
+                </>
+                : <p>Cargando...</p>
+            }
         </div>
-        <div className='productView'>
-            {books?.map((book)=>(
-            <ProductDetail key={book.publication_dt} 
-                title={book.book_title}
-                imagen={book.imagen?.id || 'https://cloudfront-us-east-1.images.arcpublishing.com/copesa/LAGOZGASXVGWPASNWYYP3IAPV4.jpg'}
-                detail={book.summary} 
-                stock = {stock}
-                initial = {initial}
-            />
-            ))}
-        </div>
-        </>
     )
 }
 
