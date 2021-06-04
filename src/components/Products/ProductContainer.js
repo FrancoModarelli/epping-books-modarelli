@@ -31,7 +31,6 @@ const ProductContainer = ({initial, stock}) =>{
         }
         fetchBooks();
     },[])
-    
     return(
         <div>
             {   
