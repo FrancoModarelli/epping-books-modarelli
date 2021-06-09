@@ -1,10 +1,13 @@
 import React from 'react'
+import { useState } from 'react'
 import ItemsCounter from '../Buttons/ItemsCounter' 
 import './Product.css'
 import '../Buttons/Buttons.css'
 
 const Product = ({ imagen, title, stock, initial }) => {
 
+        //Counter para sumar y restar
+        const [counter,setCounter] = useState(initial);
 
     return(
     <>    
@@ -15,7 +18,7 @@ const Product = ({ imagen, title, stock, initial }) => {
                 </div>
             <div className="card-body">
                 <h5 className="card-title">{ title }</h5>
-                    <ItemsCounter initial= { initial } stock={ stock } title={ title }/>
+                    <ItemsCounter initial= { initial } stock={ stock }  counter={ counter } setCounter={ setCounter }/>
             </div>
         </div>
     </>
