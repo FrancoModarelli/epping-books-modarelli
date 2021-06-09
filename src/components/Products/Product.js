@@ -1,5 +1,5 @@
 import React from 'react'
-import ButtonCounter from '../Buttons/ButtonCounter' 
+import ItemsCounter from '../Buttons/ItemsCounter' 
 import './Product.css'
 import '../Buttons/Buttons.css'
 
@@ -15,11 +15,7 @@ const Product = ({ imagen, title, stock, initial }) => {
                 </div>
             <div className="card-body">
                 <h5 className="card-title">{ title }</h5>
-                    <ButtonCounter initial= { initial } stock={ stock } />
-                <hr/>
-                <div id='btnDetalle' >
-                    <button className='btn-- btn--medium btn--primary'>Añadir</button>
-                </div>
+                    <ItemsCounter initial= { initial } stock={ stock } title={ title }/>
             </div>
         </div>
     </>

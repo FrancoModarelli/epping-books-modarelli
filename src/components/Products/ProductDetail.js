@@ -1,9 +1,29 @@
 import React from 'react'
-import ButtonCounter from '../Buttons/ButtonCounter' 
+import { useState } from 'react'
+import ItemsCounter from '../Buttons/ItemsCounter' 
 import './Product.css'
 import '../Buttons/Buttons.css'
+import AddButton from '../Buttons/AddButton'
 
 const ProductDetail = ({ imagen, title, stock, initial, detail }) => {
+
+
+    //cantidad del producto
+    const [buy, setBuy] = useState([])
+
+
+    const addToCart = (title, counter) =>{
+        const newItem = {
+            id: buy.length,
+            title: title,
+            quantity: counter
+        }
+
+        setBuy([ ...buy, newItem]) 
+        console.log(title);
+        console.log(counter);
+        console.log(buy);
+    }
 
     return(
     <>    
@@ -16,11 +36,9 @@ const ProductDetail = ({ imagen, title, stock, initial, detail }) => {
                     <div className="card-body">
                         <h5 className="card-title">{ title }</h5>
                         <p className="card-text">{ detail }</p>
-                        <ButtonCounter initial= { initial } stock={ stock } />
+                        <ItemsCounter initial= { initial } stock={ stock }/>
                         <hr/>
-                        <div id='btnDetalle' >
-                            <button className='btn-- btn--medium btn--primary'>Añadir</button>
-                        </div>
+                        <AddButton toCart = { addToCart }/>
                     </div>
                 </div>
             </div>
