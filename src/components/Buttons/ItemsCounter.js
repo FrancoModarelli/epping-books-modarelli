@@ -1,11 +1,9 @@
 import React from 'react'
-import { useState } from 'react'
 import './Buttons.css'
 
-const ItemsCounter = ({ stock, initial, title}) => {
+const ItemsCounter = ({ stock, initial, counter, setCounter}) => {
 
-    //Counter para sumar y restar
-    const [counter,setCounter] = useState(initial);
+    
     //Manejamos el cambio del counter
     const changeCounter =(value) =>{
         setCounter(counter + value);

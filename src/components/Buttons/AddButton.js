@@ -4,7 +4,7 @@ import './Buttons.css'
 const AddButton = ({ toCart }) => {
 
     return (
-        <div id='btnDetalle'>
+        <div className='btnDetalle'>
             <button className='btn-- btn--medium btn--primary' onClick={toCart}>Añadir</button>
         </div>
     )

@@ -13,6 +13,8 @@
     outline: none;
     border: none;
     cursor: pointer;
+    text-decoration: none;
+    color: #fff;
 }
 
 .btn:hover{
@@ -86,9 +88,13 @@
 }
 
 /*---Boton Detalle--*/
-#btnDetalle{
+.btnDetalle{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+a {
+    text-decoration: none;
+    color: #fff;
 }

@@ -4,15 +4,22 @@ import ItemsCounter from '../Buttons/ItemsCounter'
 import './Product.css'
 import '../Buttons/Buttons.css'
 import AddButton from '../Buttons/AddButton'
+import { EndButton } from '../Buttons/EndButton'
 
 const ProductDetail = ({ imagen, title, stock, initial, detail }) => {
 
+
+    //estado para cambiar boton
+    const [selectButton, setSelectButton] = useState(false);
+
+    //Counter para sumar y restar
+    const [counter,setCounter] = useState(initial);
 
     //cantidad del producto
     const [buy, setBuy] = useState([])
 
 
-    const addToCart = (title, counter) =>{
+    const addToCart = () =>{
         const newItem = {
             id: buy.length,
             title: title,
@@ -23,6 +30,8 @@ const ProductDetail = ({ imagen, title, stock, initial, detail }) => {
         console.log(title);
         console.log(counter);
         console.log(buy);
+
+        setSelectButton(true);
     }
 
     return(
@@ -36,9 +45,14 @@ const ProductDetail = ({ imagen, title, stock, initial, detail }) => {
                     <div className="card-body">
                         <h5 className="card-title">{ title }</h5>
                         <p className="card-text">{ detail }</p>
-                        <ItemsCounter initial= { initial } stock={ stock }/>
-                        <hr/>
-                        <AddButton toCart = { addToCart }/>
+                        {selectButton ? <EndButton />
+                            :
+                            <>
+                                <ItemsCounter initial= { initial } stock={ stock } counter={ counter } setCounter={ setCounter }/>
+                                <hr/>
+                                <AddButton toCart = {addToCart}/>
+                            </>
+                        }
                     </div>
                 </div>
             </div>
