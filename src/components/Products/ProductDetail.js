@@ -5,9 +5,11 @@ import './Product.css'
 import '../Buttons/Buttons.css'
 import AddButton from '../Buttons/AddButton'
 import { EndButton } from '../Buttons/EndButton'
+import { useCartContext } from '../Contexts/CartContext'
 
 const ProductDetail = ({ imagen, title, stock, initial, detail }) => {
 
+    const buy = useCartContext();
 
     //estado para cambiar boton
     const [selectButton, setSelectButton] = useState(false);
@@ -15,23 +17,15 @@ const ProductDetail = ({ imagen, title, stock, initial, detail }) => {
     //Counter para sumar y restar
     const [counter,setCounter] = useState(initial);
 
-    //cantidad del producto
-    const [buy, setBuy] = useState([])
-
-
     const addToCart = () =>{
-        const newItem = {
-            id: buy.length,
-            title: title,
-            quantity: counter
-        }
-
-        setBuy([ ...buy, newItem]) 
-        console.log(title);
-        console.log(counter);
-        console.log(buy);
-
         setSelectButton(true);
+        //pregunto si ya esta en la compra
+        if(!buy.isInBuy(title)){
+            buy.addProduct({title: title, quantity: counter});
+            console.log("me meti en la compra")
+        }else{
+            alert("ya estoy en la compra");
+        }
     }
 
     return(

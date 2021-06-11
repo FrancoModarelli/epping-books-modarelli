@@ -6,6 +6,7 @@ import ProductContainer from './components/Products/ProductContainer'
 import Cart from './components/Cart/Cart'
 import Nosotros from './components/AboutUs/Nosotros'
 import Contacto from './components/Contact/Contacto'
+import { CartProvider } from './components/Contexts/CartContext';
 
 const routes = [
   { path: "/", element:<ProductContainer stock={5} initial={1} /> },
@@ -17,17 +18,20 @@ const routes = [
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Switch>
-        {routes.map(({ path, element},index) => (
-          <Route key={index} exact path={path}>
-            {element}
-          </Route>
-                ))}
-  
-      </Switch>
-    </BrowserRouter>
+    //agregamos el contexto del carrito
+    <CartProvider>
+      <BrowserRouter>
+        <Navbar />
+        <Switch>
+          {routes.map(({ path, element},index) => (
+            <Route key={index} exact path={path}>
+              {element}
+            </Route>
+                  ))}
+
+        </Switch>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 
