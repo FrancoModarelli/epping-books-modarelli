@@ -5,11 +5,8 @@ import './Product.css'
 import '../Buttons/Buttons.css'
 import AddButton from '../Buttons/AddButton'
 import { EndButton } from '../Buttons/EndButton'
-import { useCartContext } from '../Contexts/CartContext'
 
 const ProductDetail = ({ imagen, title, stock, initial, detail }) => {
-
-    const buy = useCartContext();
 
     //estado para cambiar boton
     const [selectButton, setSelectButton] = useState(false);
@@ -19,13 +16,6 @@ const ProductDetail = ({ imagen, title, stock, initial, detail }) => {
 
     const addToCart = () =>{
         setSelectButton(true);
-        //pregunto si ya esta en la compra
-        if(!buy.isInBuy(title)){
-            buy.addProduct({title: title, quantity: counter});
-            console.log("me meti en la compra")
-        }else{
-            alert("ya estoy en la compra");
-        }
     }
 
     return(
@@ -39,13 +29,14 @@ const ProductDetail = ({ imagen, title, stock, initial, detail }) => {
                     <div className="card-body">
                         <h5 className="card-title">{ title }</h5>
                         <p className="card-text">{ detail }</p>
-                        {selectButton ? <EndButton />
-                            :
-                            <>
-                                <ItemsCounter initial= { initial } stock={ stock } counter={ counter } setCounter={ setCounter }/>
-                                <hr/>
-                                <AddButton toCart = {addToCart}/>
-                            </>
+                        {selectButton ? 
+                            <EndButton />
+                                :
+                                <>
+                                    <ItemsCounter initial= { initial } stock={ stock } counter={ counter } setCounter={ setCounter }/>
+                                    <hr/>
+                                    <AddButton toCart = {addToCart}/>
+                                </>
                         }
                     </div>
                 </div>

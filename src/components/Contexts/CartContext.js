@@ -8,8 +8,11 @@ export const CartProvider = ({ children }) => {
 
     const [buy, setBuy] = useState({onCart:[], totalBuy:0});    
 
-    const addProduct = (product) => {
-        setBuy({ ...buy, onCart:[...buy.addProduct, product], totalBuy: (buy.totalBuy + (product.price * product.quantity))})
+    const addProduct = (title, quantity) => {
+
+        setBuy({ ...buy, onCart:[...buy.addProduct, title], 
+                totalBuy: (buy.totalBuy + (product.price * product.quantity))})
+
         console.log(buy);
     }
 
@@ -26,7 +29,7 @@ export const CartProvider = ({ children }) => {
         return(buy.addProduct.some(book=> book.title ===title))
     }
 
-    return <CartContext.Provider value={[{buy, addProduct,clearBuy,removeProduct,isInBuy}]}>
+    return( <CartContext.Provider value={{buy, addProduct,clearBuy,removeProduct,isInBuy}}>
         { children }
-    </CartContext.Provider>;
+    </CartContext.Provider>);
 }
